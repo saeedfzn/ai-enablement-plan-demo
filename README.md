@@ -11,7 +11,7 @@ A one-page, clickable plan for rolling out AI skills across a fictional 400-pers
 - **Stakeholders:** a 30/60/90-day plan with milestones, who is involved and success measures, filterable by stakeholder.
 - **Adoption and feedback:** weekly active users, use cases adopted, confidence before and after, the unsafe client-data answer re-measured at day 90, and a "you said, we did" log, filterable by team.
 
-Plain HTML, CSS and JavaScript in one file, with no build step and no tracking. Everything is made up: the firm, people, responses and figures. It shows how I would approach the role, not a programme I have run; the page says plainly what I have and haven't done. The responsible-use notes are general principles, not legal or regulatory advice.
+Plain HTML, CSS and JavaScript in one file, with no build step and no tracking. Everything is made up: the firm, people, responses and figures. It shows how I would approach the role. The responsible-use notes are general principles, not legal or regulatory advice.
 
 It's a companion to two earlier demos: an [AI safety training module](https://saeedfzn.github.io/ai-at-work-training-demo/) (the foundation step in each learning path) and an [AI usage and governance dashboard](https://saeedfzn.github.io/ai-usage-governance-demo/).
 
