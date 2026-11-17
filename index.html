@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>AI Enablement: First 90 Days</title>
+<meta property="og:title" content="My first 90 days as AI Enablement Manager: a demo by Faizaan Saeed">
+<meta property="og:description" content="Interactive concept for a fictional 400-person accountancy and advisory firm: an AI usage baseline survey, role-based learning paths, a prompt library, responsible-use guidance, a 30/60/90-day plan and adoption measures.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://saeedfzn.github.io/ai-enablement-plan-demo/">
+<meta name="description" content="Concept demo of a 90-day AI enablement plan for a professional-services firm: baseline assessment, learning paths, prompt library, responsible use, stakeholder plan and adoption KPIs. Built by Faizaan Saeed.">
+<style>
+:root{color-scheme:light;--bg:#f6f5f2;--surface:#fcfcfb;--surface-2:#f0efec;--line:#dedcd6;--text:#0b0b0b;--text-2:#52514e;--muted:#5f5d58;--accent:#2a78d6;--accent-ink:#1c5cab;--accent-2:#b7d3f6;--good:#0ca30c;--warning:#fab219;--serious:#ec835a;--critical:#d03b3b;--good-ink:#006300;--critical-ink:#b02a2a;--warn-ink:#7a5000;--seq-1:#b7d3f6;--seq-2:#5b9be6;--seq-3:#1c5cab;--seq-1-ink:#0b0b0b;--seq-2-ink:#0b0b0b;--seq-3-ink:#ffffff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#121211;--surface:#1a1a19;--surface-2:#232321;--line:#383835;--text:#f0efec;--text-2:#c3c2b7;--muted:#a9a79d;--accent:#3987e5;--accent-ink:#86b6ef;--accent-2:#16365c;--good-ink:#6fd66f;--critical-ink:#f08a8a;--warn-ink:#fab219;--seq-1:#1d426e;--seq-2:#3987e5;--seq-3:#a8cbf5;--seq-1-ink:#f0efec;--seq-2-ink:#0b0b0b;--seq-3-ink:#0b0b0b}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#121211;--surface:#1a1a19;--surface-2:#232321;--line:#383835;--text:#f0efec;--text-2:#c3c2b7;--muted:#a9a79d;--accent:#3987e5;--accent-ink:#86b6ef;--accent-2:#16365c;--good-ink:#6fd66f;--critical-ink:#f08a8a;--warn-ink:#fab219;--seq-1:#1d426e;--seq-2:#3987e5;--seq-3:#a8cbf5;--seq-1-ink:#f0efec;--seq-2-ink:#0b0b0b;--seq-3-ink:#0b0b0b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.hero{padding:48px 0 24px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);font-weight:600}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.1;margin:8px 0 10px;letter-spacing:-.01em}
+h2{font-size:21px;margin:0 0 6px}
+h3{font-size:15px;margin:0 0 8px}
+.byline{margin:0 0 12px;font-size:14px;color:var(--text-2)}
+p.lede{font-size:17px;color:var(--text-2);max-width:740px;margin:0}
+.note{margin-top:16px;padding:12px 14px;border-left:3px solid var(--accent);background:var(--surface);color:var(--text-2);font-size:14px;max-width:760px;border-radius:0 6px 6px 0}
+section{padding:32px 0;border-top:1px solid var(--line)}
+.sub{color:var(--text-2);margin:0 0 16px;max-width:760px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+.grid>*{min-width:0}
+@media (max-width:820px){.g2,.g3{grid-template-columns:1fr}.g4{grid-template-columns:1fr 1fr}}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:top}
+th{color:var(--text-2);font-weight:600;font-size:12px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td.wcell{white-space:normal;min-width:180px}
+.kpi .v{font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .l{font-size:12px;color:var(--text-2);margin-top:4px}
+.kpi .d{font-size:12px;margin-top:6px;color:var(--muted)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:flex-end}
+select,input[type=search]{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--text);max-width:100%}
+input[type=search]{min-width:0;width:260px}
+label.inl{font-size:12px;color:var(--text-2);display:flex;flex-direction:column;gap:4px;min-width:0;max-width:100%}
+.chart{position:relative}.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--text);color:var(--bg);font-size:12px;padding:6px 8px;border-radius:6px;white-space:nowrap;opacity:0;transform:translate(-50%,-110%)}
+.ax{font-size:12px;fill:var(--muted)}.lbl{font-size:12px;fill:var(--text-2)}.gridline{stroke:var(--line);stroke-width:1}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);white-space:nowrap}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--text-2);margin:2px 0 8px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.tag{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+footer{padding:32px 0 60px;border-top:1px solid var(--line);color:var(--text-2);font-size:14px}
+a{color:var(--accent-ink)}
+.theme-toggle{position:fixed;top:12px;right:12px;font:inherit;font-size:12px;padding:5px 9px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--text);z-index:5;cursor:pointer}
+.assump{font-size:12px;color:var(--muted);margin-top:8px}
+ul.tight{margin:0;padding-left:18px;font-size:14px;color:var(--text-2)}ul.tight li{margin:4px 0}
+/* page-specific */
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.jump a{font-size:13px;text-decoration:none;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.duty{font-size:12px;color:var(--muted);margin:0 0 4px}
+fieldset{border:1px solid var(--line);border-radius:8px;margin:0 0 10px;padding:10px 12px 8px;min-width:0}
+legend{font-weight:600;font-size:14px;padding:0 4px}
+.opt{display:flex;gap:8px;align-items:flex-start;font-size:14px;padding:4px 0;cursor:pointer}
+.opt input{margin-top:4px;flex:none}
+button.btn{font:inherit;font-size:14px;padding:8px 14px;border-radius:6px;border:1px solid var(--seq-3);background:var(--seq-3);color:var(--seq-3-ink);cursor:pointer}
+button.btn.ghost{background:var(--surface);color:var(--accent-ink);border-color:var(--line)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.result{margin-top:12px}
+.level{font-size:24px;font-weight:700}
+.flag{margin-top:10px;padding:10px 12px;border-left:3px solid var(--critical);background:var(--surface-2);border-radius:0 6px 6px 0;font-size:14px}
+.okmsg{margin-top:10px;padding:10px 12px;border-left:3px solid var(--good);background:var(--surface-2);border-radius:0 6px 6px 0;font-size:14px}
+.hint{margin-top:10px;padding:10px 12px;border-left:3px solid var(--warning);background:var(--surface-2);border-radius:0 6px 6px 0;font-size:14px}
+.err{color:var(--critical-ink);font-size:14px;margin-top:8px}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.roles button{font:inherit;font-size:14px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer}
+.roles button[aria-pressed="true"]{background:var(--seq-3);border-color:var(--seq-3);color:var(--seq-3-ink);font-weight:600}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{position:relative;padding:10px 0 10px 40px;border-bottom:1px solid var(--line);counter-increment:s}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps .meta{font-size:12px;color:var(--muted)}
+.prompt{font-family:ui-monospace,Consolas,monospace;font-size:13px;background:var(--surface-2);border-radius:6px;padding:10px;white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0}
+.pcard{display:flex;flex-direction:column;gap:6px}
+.pcard .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.pcard .check{font-size:13px;color:var(--text-2)}
+.pcard button{align-self:flex-start;font:inherit;font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--accent-ink);cursor:pointer}
+.empty{padding:16px;color:var(--text-2)}
+details{margin:8px 0}
+details summary{cursor:pointer;font-weight:600;font-size:14px;padding:3px 0}
+details .ans{font-size:14px;color:var(--text-2);margin:6px 0 0}
+.phase .when{font-size:12px;font-weight:700;color:var(--accent-ink);text-transform:uppercase;letter-spacing:.06em}
+.ms{list-style:none;padding:0;margin:8px 0 0}
+.ms li{padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.ms .who{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.ms .who span{font-size:11px;padding:1px 7px;border-radius:999px;background:var(--surface-2);color:var(--text-2)}
+.measures{font-size:13px;color:var(--text-2);margin-top:10px;padding-top:8px;border-top:2px solid var(--line)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mt{margin-top:14px}
+.small{font-size:13px;color:var(--text-2)}
+@media (max-width:600px){table.stack thead{display:none}table.stack tr{display:block;padding:8px 0;border-bottom:1px solid var(--line)}table.stack td{display:block;border:0;white-space:normal;min-width:0;padding:2px 0}table.stack td.inl{display:inline-block;font-weight:600;margin-right:10px}table.stack td[data-label]::before{content:attr(data-label) ": ";font-weight:600;color:var(--text-2)}}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeBtn" type="button" aria-label="Toggle light or dark theme">◐ Theme</button>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Concept demo · AI enablement in professional services</div>
+  <h1>My first 90 days as AI Enablement Manager</h1>
+  <p class="byline"><b>Faizaan Saeed</b> · built for an AI Enablement Manager application</p>
+  <p class="lede">A fictional 400-person accountancy and advisory firm has rolled out an approved AI assistant. Some people use it daily, some never open it, and a few use free tools they shouldn't. This is how I'd spend the first 90 days, with one working section for each duty in the advert.</p>
+  <div class="note"><b>What this is:</b> a clickable concept with made-up data. It shows how I would work, not a programme I've run; <a href="#me">my background and gaps</a> are at the end. It builds on two earlier demos: a <a href="https://saeedfzn.github.io/ai-at-work-training-demo/">15-minute AI safety module with a facilitator guide</a> (the foundation step in every learning path below) and an <a href="https://saeedfzn.github.io/ai-usage-governance-demo/">AI usage, cost and governance dashboard</a>.</div>
+  <nav class="jump" aria-label="Sections on this page">
+    <a href="#assess">1 · Assess usage</a><a href="#paths">2 · Training by role</a><a href="#library">3 · Prompt library</a><a href="#responsible">4 · Responsible use</a><a href="#plan">5 · 30/60/90 plan</a><a href="#adoption">6 · Adoption &amp; feedback</a><a href="#me">About me</a>
+  </nav>
+</header>
+<main>
+
+<section id="assess" aria-labelledby="h-assess">
+  <p class="duty">Advert: "Assess current AI usage and identify opportunities to improve adoption."</p>
+  <h2 id="h-assess">1 · Where are people now? A baseline assessment</h2>
+  <p class="sub">Seven questions, about two minutes. Most ask what people actually do, with one client-data scenario and one confidence question, so the results point to what to teach. Try it as a sample employee, then see the made-up results from 120 colleagues.</p>
+  <div class="grid g2">
+    <div class="card">
+      <form id="survey" novalidate>
+        <div id="qs"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" type="submit">See my profile</button><button class="btn ghost" type="button" id="resetSurvey">Start again</button></div>
+      </form>
+      <div class="result" id="surveyResult" aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <h3>Baseline results by team <span class="small">· 120 made-up responses, share of each team's responses</span></h3>
+      <div class="legend" aria-hidden="true"><span><i class="sw" style="background:var(--seq-1);outline:1px solid var(--seq-3)"></i>Explorer</span><span><i class="sw" style="background:var(--seq-2)"></i>Practitioner</span><span><i class="sw" style="background:var(--seq-3)"></i>Champion</span></div>
+      <div class="chart" id="cMaturity"></div>
+      <details><summary>Show as a table</summary>
+        <div class="scroll"><table><caption class="sr">Maturity profile by team, made-up data</caption><thead><tr><th scope="col">Team</th><th scope="col" class="num">Responses</th><th scope="col" class="num">Explorer</th><th scope="col" class="num">Practitioner</th><th scope="col" class="num">Champion</th><th scope="col" class="num">Unsafe data answer</th></tr></thead><tbody id="matBody"></tbody></table></div>
+      </details>
+      <h3 class="mt">What the baseline tells me to do</h3>
+      <ul class="tight" id="baselineActions"></ul>
+      <p class="assump">Made-up data: 120 responses from 400 people, a 30% response rate, so the people who answered probably lean keen. Profiles: Explorer 0–7 points, Practitioner 8–14, Champion 15–21. Champions are asked to model good habits, so any flagged answer on client data, unapproved tools or checking caps the profile at Practitioner and prompts a follow-up, whatever the score. In a real firm I'd read this next to the tool's own usage reports, because self-reported use is optimistic.</p>
+    </div>
+  </div>
+</section>
+
+<section id="paths" aria-labelledby="h-paths">
+  <p class="duty">Advert: "Develop and deliver engaging training sessions to help employees use AI effectively."</p>
+  <h2 id="h-paths">2 · Training by role: learning paths</h2>
+  <p class="sub">One generic session for 400 people doesn't change habits. Everyone starts with the same short safety module; after that, each path uses that role's own tasks, rules and examples, and states what people should be able to do by the end. Pick a role.</p>
+  <div class="roles" role="group" aria-label="Choose a role" id="roleBtns"></div>
+  <div class="grid g2">
+    <div class="card"><div class="tag" id="pathTag"></div><h3 id="pathTitle"></h3><p class="small" style="margin:0 0 4px"><b>By the end, you can:</b></p><ul class="tight" id="pathObj" style="margin-bottom:8px"></ul><ol class="steps" id="pathSteps"></ol><p class="small" id="pathTime" aria-live="polite"></p></div>
+    <div class="grid" style="gap:14px">
+      <div class="card"><h3>Confidentiality rules for this role</h3><ul class="tight" id="pathRules"></ul></div>
+      <div class="card"><h3>Prompt patterns to practise</h3><ul class="tight" id="pathPrompts"></ul></div>
+      <div class="card"><h3>Hands-on exercise and evidence</h3><p class="small" id="pathExercise" style="margin:0"></p><p class="assump" id="pathDone"></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="library" aria-labelledby="h-library">
+  <p class="duty">Advert: "Create accessible learning materials, guidance and resources."</p>
+  <h2 id="h-library">3 · A prompt library for professional services</h2>
+  <p class="sub">Prompts people can copy and adapt, each with what to check before using the output and a data-sensitivity rating. Square brackets mark what you fill in. This is a starting set: in a real firm, each prompt would be tried on that team's own work by its champion and reviewed by Risk before release.</p>
+  <div class="card" style="margin-bottom:14px"><h3>Data-sensitivity ratings</h3>
+    <ul class="tight">
+      <li><span class="pill"><span class="dot" style="background:var(--good)" aria-hidden="true"></span>✓ Green</span> Public information or your own generic wording. Fine in the approved tool.</li>
+      <li><span class="pill"><span class="dot" style="background:var(--warning)" aria-hidden="true"></span>◷ Amber</span> Internal firm information, or work material with the client and anything that would identify them taken out. Approved tool only, and only what the task needs. Swapping the name isn't always enough: if the detail would still point to one client, treat it as Red.</li>
+      <li><span class="pill"><span class="dot" style="background:var(--critical)" aria-hidden="true"></span>⚠ Red</span> Anything that identifies a client, and personal data beyond routine colleague names. Only in the approved tool, only where the engagement terms and firm policy allow it, and never in a free or personal AI account. If unsure, leave it out and ask Risk.</li>
+    </ul></div>
+  <div class="filters">
+    <label class="inl" for="pSearch">Search<input type="search" id="pSearch" placeholder="e.g. client email, minutes, rates"></label>
+    <label class="inl">Role<select id="pRole"></select></label>
+    <label class="inl">Task<select id="pTask"></select></label>
+    <label class="inl">Sensitivity<select id="pSens"><option value="all">Any</option><option value="green">Green</option><option value="amber">Amber</option><option value="red">Red</option></select></label>
+    <button class="btn ghost" type="button" id="pClear">Clear filters</button>
+  </div>
+  <p class="small" id="pCount" aria-live="polite"></p><span class="sr" id="copyStatus" role="status"></span>
+  <div class="grid g3" id="pCards"></div>
+</section>
+
+<section id="responsible" aria-labelledby="h-resp">
+  <p class="duty">Advert: "Encourage best practice and support the responsible use of emerging technologies."</p>
+  <h2 id="h-resp">4 · Responsible use in professional services</h2>
+  <p class="sub">The general principles I'd build every session around. The firm's own policy, its Risk team and each professional body's current guidance take precedence; training should point to them, not paraphrase them from memory.</p>
+  <div class="grid g3">
+    <div class="card"><div class="tag">Clients</div><h3>Client confidentiality</h3><ul class="tight"><li>The duty of confidentiality to clients doesn't change because the tool is new.</li><li>Engagement letters and client contracts can restrict or forbid AI tools. Check before you start.</li><li>Approved tools only, with the minimum client information the task needs.</li></ul></div>
+    <div class="card"><div class="tag">Legal</div><h3>Privilege</h3><ul class="tight"><li>Legal privilege is narrower than many people assume, and may not cover advice from non-lawyers. It also depends on the material staying confidential, so where it goes matters.</li><li>Don't assume it applies to your work, and don't put privileged or dispute-related material into any tool without asking Legal or Risk first.</li></ul></div>
+    <div class="card"><div class="tag">Judgement</div><h3>Professional judgement stays human</h3><ul class="tight"><li>AI can draft, summarise and suggest. It can't sign off, and it doesn't carry the responsibility. The person whose name is on the work does.</li><li>Apply the same professional scepticism to AI output as to any other source.</li></ul></div>
+    <div class="card"><div class="tag">Accuracy</div><h3>Check every output</h3><ul class="tight"><li>Watch for invented figures, references, case names and quotes; out-of-date rates, thresholds and legislation; confident wording that hides a guess.</li><li>Check against the primary source, and keep a note of what you checked where the work needs it.</li></ul></div>
+    <div class="card"><div class="tag">People</div><h3>Personal data</h3><ul class="tight"><li>UK GDPR and the Data Protection Act 2018 apply to personal data in prompts and documents, just as anywhere else.</li><li>Use the least personal data the task needs. Special category data, such as health information, needs extra care.</li><li>A new use of AI on personal data may need a data protection impact assessment. That is the data protection lead's call, so ask early.</li></ul></div>
+    <div class="card"><div class="tag">Oversight</div><h3>Regulators and transparency</h3><ul class="tight"><li>Regulators and professional bodies are publishing guidance on AI. Broadly, they expect human accountability, quality control and good records.</li><li>I'd keep a short register of current guidance with Risk and update the training when it changes.</li><li>Tell clients, or record AI assistance on file, where policy or the engagement requires it.</li></ul></div>
+  </div>
+  <div class="card mt"><h3>Would you? Four quick scenarios <span class="small">· open each one for the answer</span></h3>
+    <details><summary>A manager wants a free AI app on their phone to summarise a client's draft accounts during the commute.</summary><p class="ans"><b>No.</b> Client financial information in an unapproved, personal tool breaks firm policy and risks a confidentiality breach, whatever the app's settings say. Use the approved tool on a firm device, if the engagement allows it.</p></details>
+    <details><summary>An associate asks the approved assistant to explain a new accounting standard in plain English, using only the published text.</summary><p class="ans"><b>Yes, with checks.</b> That's Green: public material. Check the explanation against the standard itself before relying on it, and don't quote the summary to a client as authoritative.</p></details>
+    <details><summary>A tax senior uses AI to draft a client letter and the letter quotes this year's allowance.</summary><p class="ans"><b>Check before it goes.</b> Rates and thresholds are a classic error. Check the figure against the official source, then the reviewer signs off as normal.</p></details>
+    <details><summary>Someone pasted a client email into a free chatbot yesterday, then realised.</summary><p class="ans"><b>Report it now, without blame.</b> Tell Risk or the service desk the same day. Fast reporting is what limits harm, and the training should say so plainly so people aren't tempted to hide it.</p></details>
+  </div>
+</section>
+
+<section id="plan" aria-labelledby="h-plan">
+  <p class="duty">Advert: "Work with stakeholders across the business to embed new ways of working."</p>
+  <h2 id="h-plan">5 · The 30/60/90-day plan</h2>
+  <p class="sub">Listen first, pilot with two teams, then scale what worked. Filter by stakeholder to see where each group is involved.</p>
+  <div class="filters"><label class="inl">Show milestones involving<select id="fWho"></select></label></div>
+  <p class="small" id="whoCount" aria-live="polite"></p>
+  <div class="grid g3" id="phases"></div>
+  <div class="card scroll mt"><h3>Stakeholders: what they need and how I'd work with them</h3>
+    <table class="stack"><caption class="sr">Stakeholders, what they need and how I would work with them</caption><thead><tr><th scope="col">Who</th><th scope="col">What they need from this</th><th scope="col">How I'd work with them</th></tr></thead><tbody id="stakeBody"></tbody></table></div>
+</section>
+
+<section id="adoption" aria-labelledby="h-adopt">
+  <p class="duty">Advert: "Monitor adoption, gather feedback and continuously improve learning initiatives."</p>
+  <h2 id="h-adopt">6 · Is it working? Adoption measures and the feedback loop</h2>
+  <p class="sub">A small set of measures, reported monthly to partners, covering use, skill and safety, with the feedback loop shown alongside so people can see their comments changing things. All figures below are made up for the demo, at day 90.</p>
+  <div class="filters"><label class="inl">Team<select id="fTeam"></select></label></div>
+  <div class="grid g4" id="kpis"></div>
+  <p class="assump">Made-up data. The day-90 pulse repeats the baseline's client-data question (section 1). Anyone still giving an unsafe answer gets a conversation, not a mark against them.</p>
+  <div class="grid g2 mt">
+    <div class="card"><h3 id="lineTitle">Weekly active users</h3>
+      <div class="legend" aria-hidden="true"><span><i class="sw" style="background:var(--accent);height:3px"></i>Share of team active that week</span><span><i class="sw" style="background:none;border-top:2px dashed var(--text-2);height:0;border-radius:0"></i>Day-90 target</span></div>
+      <div class="chart" id="cActive"></div>
+      <details><summary>Show as a table</summary><div class="scroll"><table><caption class="sr">Weekly active users by week, made-up data</caption><thead><tr><th scope="col">Week</th><th scope="col" class="num">Active users</th><th scope="col" class="num">Share</th></tr></thead><tbody id="activeBody"></tbody></table></div></details>
+      <p class="assump">Made-up data. "Active" means used the approved assistant at least once that week, from the tool's usage report. Tax and Business Services piloted from day 31; Audit and Advisory followed from day 61.</p></div>
+    <div class="card"><h3>Confidence before and after training <span class="small">· self-rated, 1 to 5</span></h3>
+      <div class="legend" aria-hidden="true"><span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/></svg>Before training</span><span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--accent)"/></svg>After (latest follow-up)</span></div>
+      <div class="chart" id="cConf"></div>
+      <details><summary>Show as a table</summary><div class="scroll"><table><caption class="sr">Self-rated confidence before and after training by team, made-up data</caption><thead><tr><th scope="col">Team</th><th scope="col" class="num">Before</th><th scope="col" class="num">After</th><th scope="col" class="num">Change</th></tr></thead><tbody id="confBody"></tbody></table></div></details>
+      <p class="assump">Made-up data. A one-question 1–5 pulse before training and at the latest follow-up; Audit and Advisory started later, so have had less time since training. Self-rated confidence isn't proof of skill, so I'd read it next to usage and the quality of work reviewers see, never on its own.</p></div>
+  </div>
+  <div class="card scroll mt"><h3>Use cases adopted</h3>
+    <table><caption class="sr">Use cases adopted, made-up data</caption><thead><tr><th scope="col">Use case</th><th scope="col">Team</th><th scope="col" class="num">People using it</th><th scope="col">Status</th></tr></thead><tbody id="ucBody"></tbody></table>
+    <p class="assump">Made-up data. "Adopted" means at least 10 people used it in the last fortnight and its prompt is in the library.</p></div>
+  <div class="card scroll mt"><h3>You said, we did</h3>
+    <table class="stack"><caption class="sr">You said, we did: feedback log, made-up entries</caption><thead><tr><th scope="col">When</th><th scope="col">Team</th><th scope="col">You said</th><th scope="col">We did</th><th scope="col">Status</th></tr></thead><tbody id="ysBody"></tbody></table>
+    <p class="assump">Made-up entries. Feedback comes from baseline survey comments, the end-of-session question, the champions' fortnightly check-in and a Teams channel; the log is shared with everyone.</p></div>
+</section>
+
+<section id="me" aria-labelledby="h-me">
+  <h2 id="h-me">Where I'm coming from</h2>
+  <div class="grid g2">
+    <div class="card"><div class="tag">What I bring</div><h3>Daily, hands-on AI use and a delivered project</h3><p class="small" style="margin:0">I use Claude and Claude Code in depth every day, including connectors (MCP), reusable skills and sub-agents, and I know the Microsoft Copilot concepts a firm like this would roll out. On a 15-day contract I delivered a system for a manufacturer: I demoed it to the client, wrote plain-English user and admin guides and handed it over. That is technology adoption on a small scale, and practice at making a technical subject accessible.</p></div>
+    <div class="card"><div class="tag">To be clear</div><h3>What I haven't done, and how I'd close the gap</h3><p class="small" style="margin:0">I haven't run a formal L&amp;D programme, I don't hold an L&amp;D qualification, and I haven't worked in professional services. So I'd design the programme and its evaluation with HR/L&amp;D, spend the first month learning the firm's risk framework and service lines from Risk and the partners, and rely on champions in each team to keep the material grounded in real work.</p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p><b>Faizaan Saeed</b>, Swindon, UK.</p>
+  <p><a href="https://www.linkedin.com/in/faizaan-saeed-ba96a426b">LinkedIn</a> · <a href="https://saeedfzn.github.io/">Portfolio</a> · <a href="https://saeedfzn.github.io/ai-at-work-training-demo/">AI safety training module</a> · <a href="https://saeedfzn.github.io/ai-usage-governance-demo/">AI usage &amp; governance dashboard</a></p>
+  <p style="font-size:12px;color:var(--muted)">A concept with made-up data. The firm, people, responses and figures are fictional. Responsible-use notes are general principles, not legal or regulatory advice. Microsoft and Copilot are trademarks of Microsoft; Claude is a trademark of Anthropic. This is an independent demo.</p>
+</footer>
+</div>
+<script>
+(function(){
+const root=document.documentElement;
+document.getElementById('themeBtn').addEventListener('click',()=>{const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;root.dataset.theme=dark?'light':'dark';});
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pct=n=>Math.round(n*100)+'%';
+// ---------- chart helpers (same pattern as the governance demo) ----------
+function tip(box,ev,html){let t=box.querySelector('.tip');if(!t){t=document.createElement('div');t.className='tip';t.setAttribute('aria-hidden','true');box.appendChild(t);}const r=box.getBoundingClientRect(),p=ev.touches?ev.touches[0]:ev;t.innerHTML=html;t.style.left=Math.max(70,Math.min(r.width-70,p.clientX-r.left))+'px';t.style.top=(p.clientY-r.top)+'px';t.style.opacity=1;}
+function untip(box){const t=box.querySelector('.tip');if(t)t.style.opacity=0;}
+function bind(box,sel,fn){box.querySelectorAll(sel).forEach(el=>{const h=ev=>tip(box,ev,fn(el));el.addEventListener('mousemove',h);el.addEventListener('touchstart',h,{passive:true});el.addEventListener('touchend',()=>setTimeout(()=>untip(box),1500));el.addEventListener('mouseleave',()=>untip(box));});}
+const widthOf=box=>Math.max(300,Math.min(560,box.clientWidth||520));
+
+// ================= 1. Baseline survey =================
+const QS=[
+ {q:'How often do you use an AI assistant for work?',o:[['Never so far',0],['About once a month',1],['Most weeks',2],['Most days',3]]},
+ {q:'Which tool do you mostly use?',o:[["I don't use one",0],['A free or personal AI app',1,'shadow'],["The firm's approved assistant",2],['The approved assistant, plus saved prompts or agents for my role',3]]},
+ {q:'What do you mostly use it for?',o:[['Nothing yet',0],['Rewording emails',1],['Summarising and first drafts of documents',2],['Drafting, analysis and reviewing my own work across several tasks',3]]},
+ {q:'When it gives you an answer you plan to use, what do you do?',o:[['Use it as it is',0,'unchecked'],['Read it through quickly',1,'skim'],['Check facts and figures against the source',2],['Check against the source, and note on file that it was AI-assisted where policy asks',3]]},
+ {q:'A client emails a spreadsheet of their staff salaries. Could you paste it into a free public chatbot to summarise it?',o:[['Yes, if it saves time',0,'confidential'],['Yes, if I delete the names first',0,'confidential'],["I'm not sure",1,'unsure'],["No. Only the firm's approved tool, and only if the engagement allows it",3]]},
+ {q:'How confident are you writing a prompt that gets a useful first draft?',o:[['Not at all',0],['A little',1],['Fairly confident',2],['Very confident',3]]},
+ {q:'Have you shown a colleague how you use AI?',o:[['No',0],['Once, informally',1],['A few times',2],['Regularly; I share prompts',3]]},
+];
+const LEVELS=[{n:'Explorer',min:0,max:7,next:'Start with the 15-minute safety module, then the first two steps of your role path. Book a 20-minute drop-in clinic and bring one real task.'},
+ {n:'Practitioner',min:8,max:14,next:'Work through your role path and try three prompts from the library on real tasks this month. Focus on the checking habits in each card.'},
+ {n:'Champion',min:15,max:21,next:'Join the champions network: an hour a fortnight to test new prompts, run a team drop-in and pass on what colleagues are asking.'}];
+const FLAGS={confidential:'<b>Client data:</b> you said you might put client information into a public tool. That is the one answer that matters more than the score. Removing names is rarely enough to make financial data anonymous. Use only the firm\'s approved tool, and check the engagement terms first.',
+ shadow:'<b>Unapproved tools:</b> you mostly use a free or personal AI app. Move that work to the approved assistant, which the firm has checked for how it handles data.',
+ unchecked:'<b>Checking:</b> using answers without checking them is where errors reach clients. The checking step in each library card shows what to look for.',
+ skim:'<b>Checking:</b> a quick read catches clumsy wording, not a wrong figure or an invented reference. Check facts and figures against the source before you rely on them.',
+ unsure:'<b>Client data:</b> not being sure is a fair answer, and it is the training\'s job to fix it. Until then the answer is no: client information never goes into a free or public tool.'};
+const SOFT=['skim','unsure'];
+function levelFor(score){return LEVELS.find(l=>score>=l.min&&score<=l.max);}
+function scoreSurvey(answers){ // answers: array of option indexes (or null)
+  let score=0;const flags=[];
+  answers.forEach((a,i)=>{const o=QS[i].o[a];score+=o[1];if(o[2]&&!flags.includes(o[2]))flags.push(o[2]);});
+  let level=levelFor(score),capped=false;
+  if(flags.length&&level.n==='Champion'){level=LEVELS[1];capped=true;}
+  return {score,level,flags,capped};
+}
+$('qs').innerHTML=QS.map((q,i)=>`<fieldset><legend>${i+1}. ${esc(q.q)}</legend>${q.o.map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"><span>${esc(o[0])}</span></label>`).join('')}</fieldset>`).join('');
+// Made-up baseline: 120 responses. [explorer, practitioner, champion, unsafe data answers]
+const TEAMS=[{n:'Audit',m:[18,16,6],unsafe:5,head:140},{n:'Tax',m:[14,12,4],unsafe:6,head:90},{n:'Advisory',m:[9,15,6],unsafe:3,head:100},{n:'Business Services',m:[9,9,2],unsafe:6,head:70}];
+const FIRM={n:'Whole firm',m:[0,1,2].map(k=>TEAMS.reduce((s,t)=>s+t.m[k],0)),unsafe:TEAMS.reduce((s,t)=>s+t.unsafe,0)};
+const TOTAL=FIRM.m.reduce((a,b)=>a+b,0);
+$('survey').addEventListener('submit',e=>{e.preventDefault();
+  const answers=QS.map((q,i)=>{const c=document.querySelector(`input[name="q${i}"]:checked`);return c?+c.value:null;});
+  const missing=answers.map((a,i)=>a===null?i+1:null).filter(Boolean);
+  if(missing.length){$('surveyResult').innerHTML=`<p class="err">Please answer question${missing.length>1?'s':''} ${missing.join(', ')} first.</p>`;const f=document.querySelector(`input[name="q${missing[0]-1}"]`);if(f)f.focus();return;}
+  const r=scoreSurvey(answers),k=LEVELS.indexOf(r.level),share=FIRM.m[k]/TOTAL;
+  $('surveyResult').innerHTML=`<div class="tag">Your profile</div><div class="level">${r.level.n}${r.capped?' <span class="small">(capped: see below)</span>':''}</div><p class="small" style="margin:4px 0 0">${r.score} of 21 points. ${pct(share)} of the 120 colleagues in the baseline are at this level.</p><p style="margin:8px 0 0;font-size:14px"><b>Suggested next step:</b> ${r.level.next}</p>`+
+    (r.flags.length?r.flags.map(f=>SOFT.includes(f)?`<div class="hint">◷ ${FLAGS[f]}</div>`:`<div class="flag">⚠ ${FLAGS[f]}</div>`).join(''):`<div class="okmsg">✓ No safety flags. Your answers on client data and checking are where they should be.</div>`);
+});
+$('resetSurvey').addEventListener('click',()=>{$('survey').reset();$('surveyResult').innerHTML='';});
+function maturityChart(){
+  const box=$('cMaturity'),rows=[...TEAMS,FIRM],W=widthOf(box),left=W<420?84:120,right=8,rowH=36,H=8+rows.length*rowH+24,pw=W-left-right;
+  const fills=['var(--seq-1)','var(--seq-2)','var(--seq-3)'],inks=['var(--seq-1-ink)','var(--seq-2-ink)','var(--seq-3-ink)'];
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Maturity profile by team, made-up data: ${rows.map(r=>{const t=r.m[0]+r.m[1]+r.m[2];return `${r.n}: ${LEVELS.map((l,k)=>`${l.n} ${pct(r.m[k]/t)}`).join(', ')}`;}).join('; ')}">`;
+  for(let g=0;g<=4;g++){const x=left+pw*g/4;s+=`<line class="gridline" x1="${x}" x2="${x}" y1="4" y2="${H-22}"/><text class="ax" x="${x}" y="${H-6}" text-anchor="${g===0?'start':g===4?'end':'middle'}">${g*25}%</text>`;}
+  rows.forEach((r,j)=>{const y=10+j*rowH,t=r.m[0]+r.m[1]+r.m[2];let x=left;
+    s+=`<text class="lbl" x="${left-8}" y="${y+15}" text-anchor="end" ${r===FIRM?'font-weight="700"':''}>${esc(W<420&&r.n==='Business Services'?'Bus. Services':r.n)}</text>`;
+    r.m.forEach((v,k)=>{const w=pw*v/t,gap=k<2?2:0,ww=Math.max(0,w-gap);
+      s+=`<rect x="${x}" y="${y}" width="${ww}" height="22" rx="${k===2?4:0}" fill="${fills[k]}"${k===0?' stroke="var(--seq-3)" stroke-width="0.75"':''}/>`;
+      if(ww>34)s+=`<text x="${x+ww/2}" y="${y+15}" text-anchor="middle" font-size="12" fill="${inks[k]}" font-weight="600">${pct(v/t)}</text>`;
+      x+=w;});
+    s+=`<rect class="hit" data-j="${j}" x="0" y="${y-6}" width="${W}" height="${rowH}" fill="transparent"/>`;});
+  box.innerHTML=s+'</svg>';
+  bind(box,'.hit',el=>{const r=rows[+el.dataset.j],t=r.m[0]+r.m[1]+r.m[2];return `<b>${esc(r.n)}</b> · ${t} responses<br>${LEVELS.map((l,k)=>`${l.n} ${r.m[k]} (${pct(r.m[k]/t)})`).join('<br>')}`;});
+  $('matBody').innerHTML=rows.map(r=>{const t=r.m[0]+r.m[1]+r.m[2];return `<tr${r===FIRM?' style="font-weight:700"':''}><td>${esc(r.n)}</td><td class="num">${t}</td>${r.m.map(v=>`<td class="num">${v} (${pct(v/t)})</td>`).join('')}<td class="num">${r.unsafe} (${pct(r.unsafe/t)})</td></tr>`;}).join('');
+}
+function baselineActions(){
+  const share=t=>t.m[0]/(t.m[0]+t.m[1]+t.m[2]),unsafe=t=>t.unsafe/(t.m[0]+t.m[1]+t.m[2]);
+  const byExp=[...TEAMS].sort((a,b)=>share(b)-share(a)),byUnsafe=[...TEAMS].sort((a,b)=>unsafe(b)-unsafe(a)),byChamp=[...TEAMS].sort((a,b)=>b.m[2]/(b.m[0]+b.m[1]+b.m[2])-a.m[2]/(a.m[0]+a.m[1]+a.m[2]));
+  const many=byExp.filter(t=>share(t)>=0.4);
+  $('baselineActions').innerHTML=[
+    `<b>Confidentiality first in ${esc(byUnsafe[0].n)}:</b> ${pct(unsafe(byUnsafe[0]))} would put client data in a public tool, the highest of any team. That goes into week-one guidance with Risk, before any skills training.`,
+    `<b>Close to half of ${esc(many.map(t=>t.n).join(', ').replace(/, ([^,]*)$/,' and $1'))} are still Explorers</b> (${pct(share(many[many.length-1]))} to ${pct(share(many[0]))}). Short, practical sessions on their own tasks, at times they can make.`,
+    `<b>Look for the first champions in ${esc(byChamp[0].n)}</b>, which has the highest share at Champion level (${pct(byChamp[0].m[2]/(byChamp[0].m[0]+byChamp[0].m[1]+byChamp[0].m[2]))}), then ask every team for at least one.`,
+    `<b>Firm-wide, ${FIRM.unsafe} of ${TOTAL} people (${pct(FIRM.unsafe/TOTAL)})</b> gave an unsafe answer on client data. That is the first number I'd want to see fall, so the same question is asked again at day 90 (section 6).`
+  ].map(a=>`<li>${a}</li>`).join('');
+}
+
+// ================= 2. Learning paths =================
+const FOUNDATION={t:'Foundation: using AI safely and well',mins:15,fmt:'Self-paced online, or 45 minutes live',d:'The shared safety module: how it works, what to keep out, prompting and checking. <a href="https://saeedfzn.github.io/ai-at-work-training-demo/">See the sample module</a>.'};
+const PATHS={
+ partner:{label:'Partner or director',tag:'Leading by example',steps:[FOUNDATION,
+   {t:'AI, clients and engagement terms',mins:20,fmt:'Small-group session with Risk',d:'What clients may expect or forbid, what to say when a client asks how the firm uses AI, and who to ask.'},
+   {t:'Prompt patterns for partners',mins:30,fmt:'Workshop with peers',d:'Briefings from long papers, challenging your own draft, and preparing for a client meeting from public information.'},
+   {t:'Reviewing AI-assisted work from your team',mins:15,fmt:'One-page review checklist plus discussion',d:'What to ask a junior who used AI, and what good checking looks like on file.'},
+   {t:'Hands-on exercise',mins:20,fmt:'Done in the session',d:'Below.'}],
+  obj:['Explain to a client, in plain words, how the firm uses AI and what it keeps out of it.','Review a piece of AI-assisted work and say what was checked, and against what.'],
+  rules:['Client information only in the approved tool, and only where the engagement terms allow it.','You remain responsible for anything signed off, however it was drafted.','Don\'t put privileged or dispute-related material into any tool without asking Legal or Risk.','Model it: say in team meetings which tasks you use AI for and how you check them.'],
+  prompts:['"Brief me in one page on [public document]: the five points that matter most to [client type], and three questions I should ask."','"Here is my draft advice [no client identifiers]. Argue against it: what would a sceptical reviewer challenge?"','"Turn these bullet points into a clear agenda for a 30-minute partner meeting, with a decision needed for each item."'],
+  exercise:'Take the published annual report of a listed company. Ask for a one-page briefing and five questions for the finance director. Then check every figure in the briefing against the report and mark anything wrong or unsupported.',
+  done:'Evidence it worked: you can explain to a client in two sentences how the firm uses AI, and you have reviewed one AI-assisted piece of work using the checklist.'},
+ associate:{label:'Associate or manager',tag:'Audit, Tax and Advisory',steps:[FOUNDATION,
+   {t:'Confidentiality in practice',mins:20,fmt:'Live session, by team',d:'The data-sensitivity ratings applied to real working papers, client emails and spreadsheets.'},
+   {t:'Prompt patterns for client work',mins:40,fmt:'Hands-on workshop',d:'Summarising guidance you supply, file notes from your own bullets, plain-English client emails, and explaining a calculation step by step.'},
+   {t:'Checking outputs properly',mins:20,fmt:'Exercise-led',d:'Figures, dates, rates, thresholds and references: how to check each one against the primary source.'},
+   {t:'Hands-on exercise',mins:30,fmt:'Done in the session',d:'Below.'}],
+  obj:['Rate a piece of work Green, Amber or Red and choose the right tool for it, or none.','Produce a first draft with the approved assistant and show the checks you made against the primary source.'],
+  rules:['Red-rated material (client-identifiable or personal) only in the approved tool and only where policy and the engagement allow it.','Never use a free or personal AI account for anything to do with a client.','AI output is a draft for you to check, not evidence. Professional scepticism applies.','Record AI assistance on file where firm policy asks you to.'],
+  prompts:['"Using only the text below, summarise the requirements in plain English and list anything that is unclear."','"Turn my rough notes into a file note with headings: purpose, what was discussed, decisions, actions with owners."','"Rewrite this explanation for a client with no finance background. Keep every figure exactly as written."'],
+  exercise:'Using a made-up client scenario with fictional data, draft a letter explaining a change in the client\'s position. Then list three things you had to correct or verify, and the source you checked each one against.',
+  done:'Evidence it worked: you have used three library prompts on real tasks and can show the checks you made on one of them.'},
+ pa:{label:'PA or business services',tag:'Business Services',steps:[FOUNDATION,
+   {t:'Handling personal and internal data',mins:15,fmt:'Short live session',d:'Diaries, HR information, client contact details: what is Amber, what is Red, and what to do instead.'},
+   {t:'Prompt patterns for everyday admin',mins:30,fmt:'Hands-on workshop',d:'Meeting notes into actions, long email threads into a summary, rewording for tone, and explaining spreadsheet formulas.'},
+   {t:'Getting help and sharing tips',mins:10,fmt:'Drop-in clinic',d:'How to ask the champions, and how to suggest a prompt for the library.'},
+   {t:'Hands-on exercise',mins:20,fmt:'Done in the session',d:'Below.'}],
+  obj:['Tell Amber from Red in everyday admin, and know what to leave out.','Turn notes or an email thread into a summary, and check names, dates and actions before sending it.'],
+  rules:['Leave out personal details (salaries, health, home addresses) unless policy clearly allows it.','Client contact lists and billing data are Red: approved tool only, minimum needed.','Check names, dates and times in any summary before you send it.','If something goes in that shouldn\'t have, report it the same day. No blame.'],
+  prompts:['"Turn these meeting notes into a list of actions with an owner and a due date for each. Don\'t add anything that isn\'t in the notes."','"Summarise this email thread in five lines: what has been agreed, what is still open, and who is waiting on whom."','"Explain what this spreadsheet formula does in plain English, then suggest a simpler version if there is one."'],
+  exercise:'Tidy the notes from a made-up internal meeting into actions with owners and dates. Then compare the output with the notes line by line and mark anything the tool added or got wrong.',
+  done:'Evidence it worked: you have saved two prompts you use weekly and can say what you check before sending.'},
+ it:{label:'IT and digital',tag:'Supporting the rollout',steps:[FOUNDATION,
+   {t:'Permissions and oversharing',mins:30,fmt:'Technical session with Risk',d:'An assistant can surface anything a user can already open, so stale sharing becomes an AI problem. Labels, permissions and what to review first.'},
+   {t:'Prompt patterns for IT work',mins:30,fmt:'Hands-on workshop',d:'Scripts with explanations, summarising sanitised logs, and turning technical steps into plain-English guidance.'},
+   {t:'Supporting users at the service desk',mins:20,fmt:'Live session',d:'Common questions, access requests, and how to log and escalate a data incident.'},
+   {t:'Hands-on exercise',mins:30,fmt:'Done in the session',d:'Below.'}],
+  obj:['Explain why existing file permissions decide what the assistant can surface, and what to review first.','Log and escalate a suspected data incident the same day.'],
+  rules:['Remove credentials, keys and client names from logs and code before using them in a prompt.','Treat generated scripts as untested code: review them and run them in a test environment first.','Raise oversharing you find with the data owner; don\'t quietly fix permissions on client sites.','Keep the approved-tools list current and easy to find.'],
+  prompts:['"Write a PowerShell script that [task]. Explain each step, list what could go wrong, and include a dry-run option."','"Here is a sanitised error log. Suggest the three most likely causes in order, and what to check to confirm each."','"Turn these technical steps into a one-page how-to for someone with no IT background."'],
+  exercise:'Write a plain-English how-to for one feature of the approved assistant, then watch a non-technical colleague follow it without help. Fix every point where they got stuck.',
+  done:'Evidence it worked: your how-to has been tested by a colleague and is in the resource library.'}
+};
+let role='associate';
+$('roleBtns').innerHTML=Object.entries(PATHS).map(([k,p])=>`<button type="button" data-role="${k}" aria-pressed="${k===role}">${esc(p.label)}</button>`).join('');
+$('roleBtns').addEventListener('click',e=>{const b=e.target.closest('button[data-role]');if(!b)return;role=b.dataset.role;renderPath();});
+function renderPath(){
+  const p=PATHS[role];
+  document.querySelectorAll('#roleBtns button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.role===role));
+  $('pathTag').textContent=p.tag;$('pathTitle').textContent=`Learning path: ${p.label}`;
+  $('pathSteps').innerHTML=p.steps.map(s=>`<li><b>${esc(s.t)}</b><div class="meta">${s.mins} min · ${esc(s.fmt)}</div><div class="small">${s.d==='Below.'?'See the exercise for this role.':s.d}</div></li>`).join('');
+  const total=p.steps.reduce((a,s)=>a+s.mins,0);
+  $('pathTime').innerHTML=`<b>Total: ${Math.floor(total/60)} h ${total%60} min</b> across about four weeks, in short slots, none longer than ${Math.max(...p.steps.map(s=>s.mins))} minutes.`;
+  $('pathObj').innerHTML=p.obj.map(r=>`<li>${esc(r)}</li>`).join('');
+  $('pathRules').innerHTML=p.rules.map(r=>`<li>${esc(r)}</li>`).join('');
+  $('pathPrompts').innerHTML=p.prompts.map(r=>`<li>${esc(r)}</li>`).join('');
+  $('pathExercise').textContent=p.exercise;$('pathDone').textContent=p.done;
+}
+
+// ================= 3. Prompt library =================
+const SENS={green:{c:'var(--good)',i:'✓',t:'Green'},amber:{c:'var(--warning)',i:'◷',t:'Amber'},red:{c:'var(--critical)',i:'⚠',t:'Red'}};
+const PROMPTS=[
+ {role:'Associate',task:'Summarise',title:'Plain-English summary of guidance',p:'Using only the text I paste below, summarise the requirements in plain English for a junior colleague. List anything ambiguous separately. Do not add information that is not in the text.\n\n[paste published guidance]',check:'Compare each point with the source text. Make sure nothing was added and nothing important dropped.',s:'green'},
+ {role:'Associate',task:'Draft',title:'File note from your own bullets',p:'Turn my notes into a file note with these headings: purpose, attendees, what was discussed, decisions, actions (owner and date). Keep my wording for any figures. Do not add anything that is not in my notes.\n\n[your notes, with the client and individuals referred to by role, such as "the client" and "the FD"]',check:'Every action and decision appears in your notes; dates and owners are right. If the notes would still identify the client, treat this as Red.',s:'amber'},
+ {role:'Associate',task:'Draft',title:'Client email in plain English',p:'Rewrite this draft email for a client with no finance background. Keep it under 200 words, keep every figure exactly as written, and end with one clear next step.\n\n[draft email]',check:'Figures unchanged; tone right for this client; a reviewer still signs it off as normal. Only where the engagement terms allow client material in the approved tool.',s:'red'},
+ {role:'Associate',task:'Draft',title:'Tax: client letter on a change in the rules',p:'Draft a short letter to a client explaining the change below and what it means for them. Plain English, under 300 words, no jargon. Use only the facts, rates and dates in my summary; where one is missing, write TO CONFIRM instead of supplying it. After the letter, list every rate, threshold and date you used.\n\n[summary of the change and the client\'s position]',check:'Every listed rate, threshold and date against the official source; the advice itself is yours, and goes through normal review. Only where the engagement terms allow client material in the approved tool.',s:'red'},
+ {role:'Associate',task:'Summarise',title:'Audit: client meeting minutes to follow-ups',p:'Summarise these minutes from a client meeting into: issues raised, information we are waiting for (with who owes it), and follow-ups for the audit team.\n\n[minutes]',check:'Nothing attributed to the wrong person; nothing added. Only where the engagement terms allow client material in the approved tool.',s:'red'},
+ {role:'Associate',task:'Analyse',title:'Explain a calculation step by step',p:'Explain this calculation step by step as if to a client, showing each figure used. Flag any step where you are unsure of the rule or rate that applies.\n\n[calculation, no identifiers]',check:'Rates, thresholds and the rules applied, against the official source. Never rely on the tool for current rates.',s:'amber'},
+ {role:'Associate',task:'Review',title:'Find gaps in my working paper narrative',p:'Read this working paper narrative. List places where the reasoning jumps, where evidence is mentioned but not described, or where a reviewer would ask "how do you know?".\n\n[narrative, client and identifying details removed]',check:'Use it as a prompt for your own thinking. The tool hasn\'t seen the evidence, so its list is neither complete nor a review.',s:'amber'},
+ {role:'Partner',task:'Prepare',title:'Client meeting briefing from public sources',p:'From the published annual report below, write a one-page briefing for a meeting with the finance director: five points that matter, three risks, and five questions to ask.\n\n[paste public report text]',check:'Check every number and quote against the report. Watch for confident claims the report doesn\'t make.',s:'green'},
+ {role:'Partner',task:'Review',title:'Argue against my draft',p:'Here is my draft recommendation. Act as a sceptical reviewer: list the strongest objections, the assumptions I haven\'t stated, and what evidence would change the conclusion.\n\n[draft, no client identifiers]',check:'It can only see what you gave it. Judge the objections yourself; some will be weak.',s:'amber'},
+ {role:'Partner',task:'Draft',title:'Partner meeting agenda',p:'Turn these points into an agenda for a 30-minute partner meeting. For each item give the decision needed, the time allowed and who leads it.\n\n[points, no client names]',check:'Priorities and timings are yours to set; adjust before sending.',s:'amber'},
+ {role:'Business services',task:'Summarise',title:'Internal email thread to five lines',p:'Summarise this email thread in five lines: what has been agreed, what is still open, and who is waiting on whom. Use names exactly as they appear.\n\n[internal thread]',check:'Names, dates and who-said-what. Summaries can merge two people\'s views. A thread with a client in it, or with HR or health details, is Red.',s:'amber'},
+ {role:'Business services',task:'Draft',title:'Meeting notes into actions',p:'Turn these notes into a table of actions with owner and due date. If an owner or date is missing, write "not stated". Do not add anything that is not in the notes.\n\n[notes from an internal meeting]',check:'Line by line against the notes; nothing invented, nothing assigned to the wrong person.',s:'amber'},
+ {role:'Business services',task:'Analyse',title:'Explain a spreadsheet formula',p:'Explain what this Excel formula does in plain English, step by step. Then suggest a simpler version if there is one, and say how to test it.\n\n[formula, no data]',check:'Test any new formula on a copy of the sheet before using it on the real one.',s:'green'},
+ {role:'Business services',task:'Draft',title:'Polite billing reminder',p:'Write a polite, firm reminder to a client about an overdue invoice. Two short paragraphs, friendly tone, one clear request. Leave [CLIENT], [AMOUNT] and [DATE] as placeholders for me to fill in.\n\n[context, without the client\'s name or figures]',check:'Add the real name, amount and date yourself, and check the tone suits this client relationship.',s:'green'},
+ {role:'IT',task:'Draft',title:'Script with explanation and dry run',p:'Write a PowerShell script that [task]. Explain each step, list what could go wrong, and include a -WhatIf or dry-run option.',check:'Review every line and run it in a test environment first. Generated code is untested code.',s:'green'},
+ {role:'IT',task:'Analyse',title:'Likely causes from a sanitised log',p:'Here is an error log with credentials and client names removed. Suggest the three most likely causes in order, and what to check to confirm each one.\n\n[sanitised log]',check:'Remove secrets and client names first. Confirm the cause yourself before changing anything.',s:'amber'},
+ {role:'Everyone',task:'Draft',title:'Write a how-to for a non-expert',p:'Turn these steps into a one-page how-to for someone with no technical background. Use numbered steps, one action each, and say what they should see after each step.\n\n[steps]',check:'Have someone follow it without help. Where they stall, the guide needs fixing.',s:'green'},
+ {role:'Everyone',task:'Review',title:'Check my writing for clarity',p:'Read my draft and point out sentences that are too long, jargon a client wouldn\'t know, and anywhere the main point is buried. Suggest edits but keep my meaning.\n\n[draft, no client identifiers]',check:'Keep your meaning and your facts; accept only the edits you agree with.',s:'amber'}
+];
+const pRoles=['all',...new Set(PROMPTS.map(p=>p.role))],pTasks=['all',...new Set(PROMPTS.map(p=>p.task))].sort((a,b)=>a==='all'?-1:b==='all'?1:a.localeCompare(b));
+$('pRole').innerHTML=pRoles.map(r=>`<option value="${esc(r)}">${r==='all'?'Any role':esc(r)}</option>`).join('');
+$('pTask').innerHTML=pTasks.map(r=>`<option value="${esc(r)}">${r==='all'?'Any task':esc(r)}</option>`).join('');
+function filterPrompts(q,r,t,s){q=q.trim().toLowerCase();
+  return PROMPTS.filter(p=>(r==='all'||p.role===r||(p.role==='Everyone'&&r!=='Everyone'))&&(t==='all'||p.task===t)&&(s==='all'||p.s===s)&&(!q||[p.title,p.p,p.check,p.role,p.task].join(' ').toLowerCase().includes(q)));}
+function renderPrompts(){
+  const list=filterPrompts($('pSearch').value,$('pRole').value,$('pTask').value,$('pSens').value);
+  $('pCount').textContent=`Showing ${list.length} of ${PROMPTS.length} prompts`+($('pRole').value!=='all'&&$('pRole').value!=='Everyone'?' (including ones for everyone)':'');
+  $('pCards').innerHTML=list.length?list.map(p=>{const i=PROMPTS.indexOf(p),s=SENS[p.s];return `<article class="card pcard"><div class="top"><span class="tag">${esc(p.role)} · ${esc(p.task)}</span><span class="pill"><span class="dot" style="background:${s.c}" aria-hidden="true"></span>${s.i} ${s.t}</span></div><h3 style="margin:0">${esc(p.title)}</h3><div class="prompt">${esc(p.p)}</div><div class="check"><b>What to check:</b> ${esc(p.check)}</div><button type="button" data-copy="${i}"><span class="ct">Copy prompt</span><span class="sr">: ${esc(p.title)}</span></button></article>`;}).join('')
+    :`<div class="card empty">No prompts match. Try a different word, or <button type="button" class="btn ghost" id="pClear2">clear the filters</button>. Missing a prompt your team needs? That's exactly what the feedback channel is for.</div>`;
+  const c2=$('pClear2');if(c2)c2.addEventListener('click',clearFilters);
+}
+function clearFilters(){$('pSearch').value='';$('pRole').value='all';$('pTask').value='all';$('pSens').value='all';renderPrompts();}
+['pSearch'].forEach(id=>$(id).addEventListener('input',renderPrompts));
+['pRole','pTask','pSens'].forEach(id=>$(id).addEventListener('change',renderPrompts));
+$('pClear').addEventListener('click',clearFilters);
+$('pCards').addEventListener('click',e=>{const b=e.target.closest('button[data-copy]');if(!b)return;const txt=PROMPTS[+b.dataset.copy].p;
+  const ct=b.querySelector('.ct'),done=ok=>{ct.textContent=ok?'Copied ✓':'Select and copy manually';$('copyStatus').textContent=ok?'Prompt copied':'Copy failed. Select the prompt text and copy it manually.';setTimeout(()=>{ct.textContent='Copy prompt';$('copyStatus').textContent='';},1800);};
+  const legacy=()=>{const ta=document.createElement('textarea');ta.value=txt;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy');}catch(_){}ta.remove();b.focus();done(ok);};
+  try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(()=>done(true),legacy);}else legacy();}catch(_){legacy();}
+});
+
+// ================= 5. 30/60/90 plan =================
+const WHO=['Partners','Risk','IT','HR/L&D','Champions','Everyone'];
+const PHASES=[
+ {when:'Day 1–30',title:'Listen and baseline',ms:[
+   {t:'Meet the managing partner, service-line leads, Risk, IT and HR/L&D; agree what success looks like at day 90',w:['Partners','Risk','IT','HR/L&D']},
+   {t:'Run the baseline survey (aim: a fair sample from every team) and pull the tool\'s own usage report',w:['Everyone','IT']},
+   {t:'Review the acceptable-use policy and data-sensitivity ratings with Risk; publish a one-page guide',w:['Risk']},
+   {t:'List the tools people actually use, approved or not, without blame',w:['IT','Everyone']},
+   {t:'Recruit at least one champion per team and agree a fortnightly hour',w:['Champions','Partners']},
+   {t:'Pick three priority use cases per service line with the leads',w:['Partners','Champions']}],
+  measures:'Survey response rate · guide published · champions named in all four teams · use cases signed off'},
+ {when:'Day 31–60',title:'Pilot and teach',ms:[
+   {t:'Pilot the learning paths with Tax and Business Services',w:['Champions','HR/L&D']},
+   {t:'Weekly 20-minute drop-in clinics, plus recordings with captions',w:['Everyone']},
+   {t:'Publish the prompt library, reviewed by Risk and each team\'s champion',w:['Risk','Champions']},
+   {t:'Partner session using public material only, to build sponsorship',w:['Partners']},
+   {t:'Start the "you said, we did" log and share it monthly',w:['Everyone']}],
+  measures:'Attendance · confidence before and after · library use · data near-misses reported (reporting is good) · pilot feedback'},
+ {when:'Day 61–90',title:'Scale and embed',ms:[
+   {t:'Roll the paths out to Audit and Advisory, adjusted from the pilot',w:['Partners','Champions']},
+   {t:'Add the foundation module to new-joiner induction',w:['HR/L&D']},
+   {t:'Monthly adoption report to partners: usage, use cases, confidence, feedback',w:['Partners','IT']},
+   {t:'Build AI skills into development conversations with HR',w:['HR/L&D']},
+   {t:'Repeat the baseline client-data question as a day-90 pulse and compare',w:['Everyone','Risk']},
+   {t:'Agree the next six months: priorities, budget and what to stop',w:['Partners','Risk','IT','HR/L&D']}],
+  measures:'Weekly active users against target · use cases adopted · confidence change · fewer unsafe client-data answers than at baseline · data incidents reported the same day · plan approved'}
+];
+const STAKE=[
+ ['Partners','Confidence it is safe, useful for clients, and worth the time','Short demos on their own work, a monthly one-page report, and visible sponsorship from one partner per service line'],
+ ['Risk and compliance','Client confidentiality protected; guidance that matches policy and professional-body expectations','Review every guide and prompt before release; joint session on data handling; a shared register of current guidance'],
+ ['IT','A rollout that is supportable, secure and doesn\'t flood the service desk','Agree permissions clean-up and usage reporting; share an FAQ; pass on recurring support questions'],
+ ['HR / L&D','Learning that fits the existing framework, induction and development reviews','Co-design the paths and evaluation; add the foundation module to induction; link AI skills to development conversations'],
+ ['Champions','Time, recognition and early access','Fortnightly hour, first look at new features, credit in the monthly report'],
+ ['Everyone else','Help that fits their day, and permission to ask basic questions','Short sessions at sensible times, recordings, drop-ins, and a feedback route that visibly leads to changes']
+];
+$('fWho').innerHTML='<option value="all">All stakeholders</option>'+WHO.map(w=>`<option value="${esc(w)}">${esc(w)}</option>`).join('');
+$('fWho').addEventListener('change',renderPlan);
+function renderPlan(){
+  const w=$('fWho').value;let n=0,total=0;
+  $('phases').innerHTML=PHASES.map(p=>{const ms=p.ms.filter(m=>w==='all'||m.w.includes(w));n+=ms.length;total+=p.ms.length;
+    return `<div class="card phase"><div class="when">${p.when}</div><h3>${p.title}</h3><ul class="ms">${ms.length?ms.map(m=>`<li>${esc(m.t)}<div class="who">${m.w.map(x=>`<span>${esc(x)}</span>`).join('')}</div></li>`).join(''):'<li class="small">No milestones for this group in this phase.</li>'}</ul><div class="measures"><b>Success measures:</b> ${esc(p.measures)}</div></div>`;}).join('');
+  $('whoCount').textContent=w==='all'?`Showing all ${total} milestones`:`Showing ${n} of ${total} milestones involving ${w}`;
+}
+$('stakeBody').innerHTML=STAKE.map(s=>`<tr><td><b>${esc(s[0])}</b></td><td class="wcell" data-label="Needs">${esc(s[1])}</td><td class="wcell" data-label="How">${esc(s[2])}</td></tr>`).join('');
+
+// ================= 6. Adoption =================
+// Made-up weekly active users, weeks 1–13 (about 90 days)
+const ACTIVE={Audit:[35,36,38,39,41,42,44,47,52,60,68,74,77],Tax:[27,28,29,31,34,41,47,52,55,57,59,60,61],Advisory:[40,42,43,45,47,50,53,56,60,63,66,68,70],'Business Services':[15,16,17,18,20,27,33,37,40,41,42,43,43]};
+const CONF={Audit:[2.4,3.2],Tax:[2.6,3.7],Advisory:[3.0,3.6],'Business Services':[2.1,3.5]};
+const ATTEND={Audit:62,Tax:71,Advisory:58,'Business Services':55};
+const REPULSE={Audit:[3,38],Tax:[1,32],Advisory:[1,28],'Business Services':[2,22]}; // day-90 pulse: [unsafe answers, responses]
+const TARGET=0.6;
+const USECASES=[
+ ['Plain-English client emails','Tax',34,'Adopted'],['Summarising published guidance','Tax',27,'Adopted'],['File notes from bullet points','Audit',31,'Adopted'],['Working paper narrative review','Audit',9,'Trial'],['Client meeting briefings from public reports','Advisory',22,'Adopted'],['Challenge-my-draft reviews','Advisory',14,'Adopted'],['Meeting notes into actions','Business Services',29,'Adopted'],['Email thread summaries','Business Services',24,'Adopted'],['Spreadsheet formula help','Business Services',8,'Trial'],['Proposal first drafts','Advisory',6,'Trial']];
+const YSWD=[
+ ['Week 2','Tax','"We don\'t know what we\'re allowed to put in it."','Published a one-page guide with the data-sensitivity ratings, agreed with Risk.','Done'],
+ ['Week 6','Business Services','"The sessions are at times we can\'t make."','Added 20-minute lunchtime slots and captioned recordings.','Done'],
+
+ ['Week 7','Advisory','"Partners want to see examples before they approve use on engagements."','Ran a 45-minute partner demo using public information only.','Done'],
+ ['Week 9','Tax','"It gets this year\'s rates wrong."','Added a "check rates against the official source" step to every tax prompt and the training.','Done'],
+ ['Week 10','Audit','"The generic prompts don\'t fit audit work."','Audit champions wrote the first two audit prompts for the library (both in section 3); more are with the audit quality lead for review.','In progress'],
+ ['Week 11','All teams','"Too many people don\'t know how to get access."','Wrote an access FAQ with IT and added it to the service desk replies.','In progress'],
+ ['Week 12','Audit','"Do I need to record AI use on the file?"','Raised with Risk; firm guidance is being drafted.','In progress']];
+const TEAMNAMES=Object.keys(ACTIVE),HEADS=Object.fromEntries(TEAMS.map(t=>[t.n,t.head]));
+$('fTeam').innerHTML='<option value="all">Whole firm</option>'+TEAMNAMES.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('');
+$('fTeam').addEventListener('change',renderAdoption);
+function series(team){const ts=team==='all'?TEAMNAMES:[team];const head=ts.reduce((s,t)=>s+HEADS[t],0);return {head,v:ACTIVE[ts[0]].map((_,w)=>ts.reduce((s,t)=>s+ACTIVE[t][w],0))};}
+function wavg(team,k){const ts=team==='all'?TEAMNAMES:[team];const h=ts.reduce((s,t)=>s+ATTEND[t],0);return ts.reduce((s,t)=>s+CONF[t][k]*ATTEND[t],0)/h;} // weighted by people trained
+function renderAdoption(){
+  const team=$('fTeam').value,s=series(team),last=s.v[12],first=s.v[0];
+  const uc=USECASES.filter(u=>team==="all"||u[1]===team);
+  const adopted=uc.filter(u=>u[3]==='Adopted').length;
+  const cb=wavg(team,0),ca=wavg(team,1);
+  const ts=team==='all'?TEAMNAMES:[team],att=ts.reduce((a,t)=>a+ATTEND[t],0),head=s.head;
+  const hit=last/head>=TARGET;
+  const bt=team==='all'?TEAMS:TEAMS.filter(t=>t.n===team),ub=bt.reduce((a,t)=>a+t.unsafe,0),nb=bt.reduce((a,t)=>a+t.m[0]+t.m[1]+t.m[2],0),ua=ts.reduce((a,t)=>a+REPULSE[t][0],0),na=ts.reduce((a,t)=>a+REPULSE[t][1],0);
+  $('kpis').innerHTML=[
+    {v:pct(last/head),l:'Weekly active users, week 13',d:`${last} of ${head} people, up from ${pct(first/head)} in week 1 · ${hit?'✓ at or above':'◷ below'} the ${pct(TARGET)} target`},
+    {v:`${adopted}`,l:'Use cases adopted',d:`${uc.length-adopted} more in trial`},
+    {v:`${cb.toFixed(1)} → ${ca.toFixed(1)}`,l:'Confidence, before → after (of 5)',d:`${att} people trained (${pct(att/head)} of ${team==='all'?'the firm':'the team'})`},
+    {v:`${pct(ub/nb)} → ${pct(ua/na)}`,l:'Unsafe answer on client data, baseline → day 90',d:`${ub} of ${nb} responses then · ${ua} of ${na} now`}
+  ].map(k=>`<div class="card kpi"><div class="v">${k.v}</div><div class="l">${k.l}</div><div class="d">${k.d}</div></div>`).join('');
+  $('lineTitle').textContent='Weekly active users · '+(team==='all'?'whole firm':team);
+  lineChart(s,team);confChart(team);
+  $('activeBody').innerHTML=s.v.map((v,w)=>`<tr><td>Week ${w+1}</td><td class="num">${v}</td><td class="num">${pct(v/s.head)}</td></tr>`).join('');
+  $('ucBody').innerHTML=uc.map(u=>`<tr><td>${esc(u[0])}</td><td>${esc(u[1])}</td><td class="num">${u[2]}</td><td><span class="pill"><span class="dot" style="background:${u[3]==='Adopted'?'var(--good)':'var(--warning)'}" aria-hidden="true"></span>${u[3]==='Adopted'?'✓':'◷'} ${u[3]}</span></td></tr>`).join('');
+  const ys=YSWD.filter(y=>team==='all'||y[1]===team||y[1]==='All teams');
+  $('ysBody').innerHTML=ys.map(y=>`<tr><td class="inl">${y[0]}</td><td class="inl">${esc(y[1])}</td><td class="wcell" data-label="You said">${esc(y[2])}</td><td class="wcell" data-label="We did">${esc(y[3])}</td><td><span class="pill"><span class="dot" style="background:${y[4]==='Done'?'var(--good)':'var(--warning)'}" aria-hidden="true"></span>${y[4]==='Done'?'✓':'◷'} ${y[4]}</span></td></tr>`).join('');
+}
+function lineChart(s,team){
+  const box=$('cActive'),W=widthOf(box),H=230,top=14,left=40,right=12,bottom=40,pw=W-left-right,ph=H-top-bottom,n=s.v.length;
+  const x=w=>left+pw*w/(n-1),y=v=>top+ph-ph*v;
+  const pts=s.v.map((v,w)=>[x(w),y(v/s.head)]);
+  let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Weekly active users, ${team==='all'?'whole firm':esc(team)}, made-up data: week 1 ${pct(s.v[0]/s.head)}, week 5 ${pct(s.v[4]/s.head)}, week 9 ${pct(s.v[8]/s.head)}, week 13 ${pct(s.v[12]/s.head)}; target ${pct(TARGET)}">`;
+  for(let g=0;g<=4;g++){const v=g*0.25,yy=y(v);svg+=`<line class="gridline" x1="${left}" x2="${W-right}" y1="${yy}" y2="${yy}"/><text class="ax" x="${left-6}" y="${yy+4}" text-anchor="end">${g*25}%</text>`;}
+  // phase markers at day 30/60 (end of weeks ~4 and ~9)
+  [[4.3,'Day 31'],[8.6,'Day 61']].forEach(([w,l])=>{const xx=left+pw*w/(n-1);svg+=`<line x1="${xx}" x2="${xx}" y1="${top}" y2="${top+ph}" stroke="var(--line)" stroke-width="2"/><text class="ax" x="${xx}" y="${H-6}" text-anchor="middle">${l}</text>`;});
+  [0,4,8,12].forEach(w=>{svg+=`<text class="ax" x="${x(w)}" y="${top+ph+16}" text-anchor="${w===0?'start':w===12?'end':'middle'}">Wk ${w+1}</text>`;});
+  svg+=`<line x1="${left}" x2="${W-right}" y1="${y(TARGET)}" y2="${y(TARGET)}" stroke="var(--text-2)" stroke-width="1.5" stroke-dasharray="5 4"/><text class="lbl" x="${left+4}" y="${y(TARGET)-6}">Target ${pct(TARGET)}</text>`;
+  svg+=`<path d="M${pts.map(p=>p.map(c=>c.toFixed(1)).join(',')).join(' L')}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>`;
+  const lp=pts[n-1];svg+=`<circle cx="${lp[0]}" cy="${lp[1]}" r="4" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="lbl" x="${lp[0]-6}" y="${lp[1]-10}" text-anchor="end" font-weight="700">${pct(s.v[n-1]/s.head)}</text>`;
+  svg+=`<line id="xh" x1="0" x2="0" y1="${top}" y2="${top+ph}" stroke="var(--muted)" stroke-width="1" opacity="0"/><circle id="xd" r="4" fill="var(--accent)" stroke="var(--surface)" stroke-width="2" opacity="0"/>`;
+  pts.forEach((p,w)=>{const x0=w===0?left:(pts[w-1][0]+p[0])/2,x1=w===n-1?W-right:(p[0]+pts[w+1][0])/2;svg+=`<rect class="hit" data-w="${w}" x="${x0}" y="${top}" width="${x1-x0}" height="${ph}" fill="transparent"/>`;});
+  box.innerHTML=svg+'</svg>';
+  const xh=box.querySelector('#xh'),xd=box.querySelector('#xd');
+  bind(box,'.hit',el=>{const w=+el.dataset.w,p=pts[w];xh.setAttribute('x1',p[0]);xh.setAttribute('x2',p[0]);xh.setAttribute('opacity',1);xd.setAttribute('cx',p[0]);xd.setAttribute('cy',p[1]);xd.setAttribute('opacity',1);return `<b>Week ${w+1}</b><br>${s.v[w]} of ${s.head} active (${pct(s.v[w]/s.head)})`;});
+  box.onmouseleave=()=>{const a=box.querySelector('#xh'),d=box.querySelector('#xd');if(a)a.setAttribute('opacity',0);if(d)d.setAttribute('opacity',0);}; // assigned, not added: this runs on every re-render
+}
+function confChart(team){
+  const box=$('cConf'),rows=TEAMNAMES.map(t=>({n:t,b:CONF[t][0],a:CONF[t][1]})),W=widthOf(box),left=W<420?84:120,right=40,rowH=38,H=10+rows.length*rowH+24,pw=W-left-right;
+  const x=v=>left+pw*(v-1)/4;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Self-rated confidence out of 5, before and after training, made-up data: ${rows.map(r=>`${r.n} ${r.b.toFixed(1)} to ${r.a.toFixed(1)}`).join('; ')}">`;
+  for(let g=1;g<=5;g++){const xx=x(g);s+=`<line class="gridline" x1="${xx}" x2="${xx}" y1="4" y2="${H-22}"/><text class="ax" x="${xx}" y="${H-6}" text-anchor="middle">${g}</text>`;}
+  rows.forEach((r,j)=>{const yy=12+j*rowH+10,dim=team!=='all'&&r.n!==team;const op=dim?0.35:1;
+    s+=`<g opacity="${op}"><text class="lbl" x="${left-8}" y="${yy+4}" text-anchor="end" ${!dim&&team!=='all'?'font-weight="700"':''}>${esc(W<420&&r.n==='Business Services'?'Bus. Services':r.n)}</text>`;
+    s+=`<line x1="${x(r.b)}" x2="${x(r.a)}" y1="${yy}" y2="${yy}" stroke="var(--accent)" stroke-width="2"/>`;
+    s+=`<circle cx="${x(r.b)}" cy="${yy}" r="5" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/><circle cx="${x(r.a)}" cy="${yy}" r="5.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/>`;
+    s+=`<text class="lbl" x="${x(r.a)+10}" y="${yy+4}">+${(r.a-r.b).toFixed(1)}</text></g>`;
+    s+=`<rect class="hit" data-j="${j}" x="0" y="${yy-rowH/2}" width="${W}" height="${rowH}" fill="transparent"/>`;});
+  box.innerHTML=s+'</svg>';
+  bind(box,'.hit',el=>{const r=rows[+el.dataset.j];return `<b>${esc(r.n)}</b><br>Before ${r.b.toFixed(1)} · After ${r.a.toFixed(1)}`;});
+  $('confBody').innerHTML=rows.map(r=>`<tr><td>${esc(r.n)}</td><td class="num">${r.b.toFixed(1)}</td><td class="num">${r.a.toFixed(1)}</td><td class="num">+${(r.a-r.b).toFixed(1)}</td></tr>`).join('');
+}
+function renderCharts(){maturityChart();renderAdoption();}
+maturityChart();baselineActions();renderPath();renderPrompts();renderPlan();renderAdoption();
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(renderCharts,150);});
+// test hook (harmless in production)
+window.__demo={QS,LEVELS,scoreSurvey,TEAMS,FIRM,TOTAL,PROMPTS,filterPrompts,PATHS};
+})();
+</script>
+</body>
+</html>
